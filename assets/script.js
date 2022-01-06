@@ -56,34 +56,34 @@ var generatePassword = function() {
 
   //Loop for characters, condition to check if 1 is selected
   var charactersCheck = false;
-  var charactersArray = [];
+  var charactersSelected = "";
 
   while(!charactersCheck) {
 
     //Ask user if they want lowercase
     if(window.confirm("Do you want to use lowercase letters in your password?")){
-      charactersArray.push("a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z");
+      charactersSelected += "abcdefghijklmnopqrstuvwxyz";
       console.log("Password populated with lowercase.");
       charactersCheck = true;
     }
 
     //Ask user if they want uppercase
     if(window.confirm("Do you want to use uppercase letters in your password?")){
-      charactersArray.push("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z");
+      charactersSelected += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
       console.log("Password populated with uppercase.");
       charactersCheck = true;
     }
 
     //Ask user if they want numeric
     if(window.confirm("Do you want to use numbers in your password?")){
-      charactersArray.push("0","1","2","3","4","5","6","7","8","9");
+      charactersSelected += "0123456789";
       console.log("Password populated with numbers.");
       charactersCheck = true;
     }
 
     //Ask user if they want special characters
-    if(window.confirm("Do you want to use lower case letters in your password?")){
-      charactersArray.push(" ","!",'"',"#","%","&","'","(",")","*","+",",","-",".","/",":",";","<","=",">","?","@","[","\\","]","^","_","`","{","|","}","~");
+    if(window.confirm("Do you want to use symbols in your password?")){
+      charactersSelected += (" !#$%&()*+,-./:;<=>?@[\\]^_`{|}~" + '"' + "'");
       console.log("Password populated with symbols.")
       charactersCheck = true;
     }
@@ -92,6 +92,7 @@ var generatePassword = function() {
       window.alert("You have to select at least one character type. Please try again.");
     }
   }
+  console.log("Password will be generated with following available characters: " + charactersSelected);
 
   //Loop and use math function to populate array
 }
