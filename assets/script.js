@@ -55,46 +55,51 @@ var generatePassword = function() {
 
 
   //Loop for characters, condition to check if 1 is selected
-  var charactersCheck = false;
-  var charactersSelected = "";
+  var charactersSelected = "",
+      lowercaseSelected = false,
+      uppercaseSelected = false,
+      numbersSelected = false,
+      symbolsSelected = false; 
 
-  while(!charactersCheck) {
+  while(!(lowercaseSelected || uppercaseSelected || numbersSelected || symbolsSelected)) {
 
     //Ask user if they want lowercase
     if(window.confirm("Do you want to use lowercase letters in your password?")){
       charactersSelected += "abcdefghijklmnopqrstuvwxyz";
       console.log("Password populated with lowercase.");
-      charactersCheck = true;
+      lowercaseSelected = true;
     }
 
     //Ask user if they want uppercase
     if(window.confirm("Do you want to use uppercase letters in your password?")){
       charactersSelected += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
       console.log("Password populated with uppercase.");
-      charactersCheck = true;
+      uppercaseSelected = true;
     }
 
     //Ask user if they want numeric
     if(window.confirm("Do you want to use numbers in your password?")){
       charactersSelected += "0123456789";
       console.log("Password populated with numbers.");
-      charactersCheck = true;
+      numbersSelected = true;
     }
 
     //Ask user if they want special characters
     if(window.confirm("Do you want to use symbols in your password?")){
       charactersSelected += (" !#$%&()*+,-./:;<=>?@[\\]^_`{|}~" + '"' + "'");
       console.log("Password populated with symbols.")
-      charactersCheck = true;
+      symbolsSelected = true;
     }
     
-    if(!charactersCheck){
+    if(!(lowercaseSelected || uppercaseSelected || numbersSelected || symbolsSelected)){
       window.alert("You have to select at least one character type. Please try again.");
     }
   }
   console.log("Password will be generated with following available characters: " + charactersSelected);
 
   //Loop and use math function to populate array
+
+  //Check to make sure each type picked was chosen
 }
 
 // Get references to the #generate element
