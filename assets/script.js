@@ -21,7 +21,7 @@ var generatePassword = function() {
       lengthInput = window.prompt("Please enter a password length of 8 to 128 characters.");
 
       //If there is a character that is not a digit:
-      if(/[^0-9]/.test(lengthInput || lengthInput === "" || lengthInput === null)){
+      if(isNaN(lengthInput) || lengthInput === "" || lengthInput === null){
         window.alert("Please input a valid input for the length of your password. Length must only contain numbers.");
       }
       else {
