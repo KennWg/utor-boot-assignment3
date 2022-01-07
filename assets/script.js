@@ -48,6 +48,7 @@ var generatePassword = function() {
   else {
     console.log("Length has defaulted to 8.");
     window.alert("Your length has been set to the default of 8.");
+    passwordLength = 8;
   };
 
 
@@ -103,12 +104,61 @@ var generatePassword = function() {
 
   //Loop and use math function to populate array
   let tempPassword = "";
-  for (let i = 0; i < passwordLength; i++){
-    tempPassword += charactersSelected.charAt(Math.floor(Math.random() * charactersSelected.length));
-  }
-  return tempPassword;
+  let passwordCheck = false;
 
-  //Check to make sure each type picked was chosen
+  while(!passwordCheck){
+    tempPassword = "";
+    for (let i = 0; i < passwordLength; i++){
+      tempPassword += charactersSelected.charAt(Math.floor(Math.random() * charactersSelected.length));
+    }
+    console.log("Temp password generated, attempt: " + tempPassword);
+
+    //Check to make sure each type picked was chosen
+    if(lowercaseSelected){
+      if(/[a-z]/.test(tempPassword)){
+        passwordCheck = true;
+        console.log("lower case check passed");
+      }
+      else{
+        passwordCheck = false;
+        console.log("lower case check failed - regenerating password");
+        continue;
+      }
+    }
+    if(uppercaseSelected){
+      if(/[A-Z]/.test(tempPassword)){
+        passwordCheck = true;
+        console.log("upper case check passed");
+      }
+      else{
+        passwordCheck = false;
+        console.log("upper case check failed - regenerating password");
+        continue;
+      }
+    }
+    if(numbersSelected){
+      if(/[1-9]/.test(tempPassword)){
+        passwordCheck = true;
+        console.log("number check passed");
+      }
+      else{
+        passwordCheck = false;
+        console.log("number check failed - regenerating password");
+        continue;
+      }
+    }
+    if(symbolsSelected){
+      if(/[ !#$%&()*+,-./:;<=>?@[\\\]^_`{|}~'"]/.test(tempPassword)){
+        passwordCheck = true;
+        console.log("symbol check passed");
+      }
+      else{
+        passwordCheck = false;
+        console.log("symbol check failed - regenerating password");
+      }
+    }
+  }
+return tempPassword;
 }
 
 // Get references to the #generate element
