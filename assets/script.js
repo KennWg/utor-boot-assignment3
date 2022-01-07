@@ -97,7 +97,16 @@ var generatePassword = function() {
   }
   console.log("Password will be generated with following available characters: " + charactersSelected);
 
+
+  //Password Generation
+
+
   //Loop and use math function to populate array
+  let tempPassword = "";
+  for (let i = 0; i < passwordLength; i++){
+    tempPassword += charactersSelected.charAt(Math.floor(Math.random() * charactersSelected.length));
+  }
+  return tempPassword;
 
   //Check to make sure each type picked was chosen
 }
